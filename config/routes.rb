@@ -1,5 +1,7 @@
 Depot::Application.routes.draw do
   
+  resources :orders
+
   get "store/index"
 
   resources :line_items
