@@ -1,48 +1,27 @@
-#
-# bundler
-#
-require 'bundler/capistrano'
+# good example http://hostingrails.com/Capistrano-Deploying-Your-Rails-Application-on-HostingRails-com
 
+ set :application, "depot"
+ set :repository,  "git@github.com:katyabain/depot.git"
 #
-# app/server config
-#
-set :application, "depot"
-set :user, "katya"
+ set :scm, :git
+ set :scm_username, "katyabain"
+ set :user, "katya"
+ set :branch, "master"
+ #set :use_sudo, false
+ set :copy_exclude, [".git", "spec"]
+ set :deploy_via, :copy
 
-set :deploy_to, "/var/www/depot"
-set :deploy_via, :remote_cache
+ # Or: `accurev`, `bzr`, `cvs`, `darcs`, `git`, `mercurial`, `perforce`, `subversion` or `none`
+ default_run_options[:pty] = true
 
-#set :use_sudo, false
-default_run_options[:pty] = true
-ssh_options[:forward_agent] = true
+ set :deploy_to, "/var/www/depot"
+ # read more about it
+ #set :chmod755, %w(app config db lib public vendor script tmp public/dispatch.cgi public/dispatch.fcgi public/dispatch.rb)
 
-#
-#  GIT
-#
-set :scm, :git
-set :gituser, "katyabain"
-set :repository,  "git@github.com/#{gituser}/depot.git"
-set :branch, "master"
-set :copy_exclude, [".git", "spec"]
-
-#
-#   RVM
-#
-$:.unshift(File.expand_path('./lib', ENV['rvm_path']))
-require "rvm/capistrano"
-set :rvm_ruby_string, 'ruby-1.9.2-head@rails_app'
-
-#
-# UNICORN
-#
-set :unicorn_config, "#{current_path}/config/unicorn.rb"
-set :unicorn_pid, "#{current_path}/tmp/pids/unicorn.pid"
-
-#
-#  Cap deploy config
-#
-server "superfranklin.com", :app, :web, :db, :primary => true
-set :rails_env, :production
+ role :web, "superfranklin.com"                          # Your HTTP server, Apache/etc
+ role :app, "superfranklin.com"                          # This may be the same as your `Web` server
+ role :db,  "superfranklin.com", :primary => true # This is where Rails migrations will run
+ # role :db,  "your slave db-server here"
 
 
 
