@@ -45,21 +45,25 @@ class OrdersController < ApplicationController
 
   # POST /orders
   # POST /orders.xml
-  def create
-    @order = Order.new(params[:order])
-
-    respond_to do |format|
-      if @order.save
-        format.html { redirect_to(@order, :notice => 'Order was successfully created.') }
-        format.xml  { render :xml => @order, :status => :created, :location => @order }
-      else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @order.errors, :status => :unprocessable_entity }
-      end
-    end
-  end
-
-  # PUT /orders/1
+ def create
+     @order = Order.new(params[:order])
+         @order.add_line_items_from_cart(current_cart)
+         
+             respond_to do |format|
+                   if @order.save
+                             Cart.destroy(session[:cart_id])
+                                     session[:cart_id] = nil
+                                             format.html { redirect_to(store_url, :notice => 
+                                                       'Thank you for your order.') }
+                                                               format.xml  { render :xml => @order, :status => :created,
+                                                                         :location => @order }
+                                                                               else
+                                                                                         format.html { render :action => "new" }
+                                                                                                 format.xml  { render :xml => @order.errors,
+                                                                                                           :status => :unprocessable_entity }
+                                                                                                                 end
+                                                                                                                     end
+                                                                                                                       end 
   # PUT /orders/1.xml
   def update
     @order = Order.find(params[:id])
