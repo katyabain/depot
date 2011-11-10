@@ -11,10 +11,20 @@ class OrdersControllerTest < ActionController::TestCase
     assert_not_nil assigns(:orders)
   end
 
-  test "should get new" do
+test "requires item in cart" do
     get :new
-    assert_response :success
-  end
+        assert_redirected_to store_path
+            assert_equal flash[:notice], 'Your cart is empty'
+              end
+
+test "should get new" do
+    cart = Cart.create
+        session[:cart_id] = cart.id
+            LineItem.create(:cart => cart, :product => products(:ruby))
+
+                get :new
+                    assert_response :success
+                      end
 
   test "should create order" do
     assert_difference('Order.count') do
@@ -43,24 +53,7 @@ class OrdersControllerTest < ActionController::TestCase
     assert_difference('Order.count', -1) do
       delete :destroy, :id => @order.to_param
     end
-
-    assert_redirected_to orders_path
-  end
-
- test "requires item in the cart" do
-   get :new
-   assert_redirected_to store_path
-   assert_equal flash[:notice], 'Your cart is empty'
-  end
-
- test "should get new" do
-   cart = Cart.create
-   session[:cart_id] = cart.id
-   LineItem.create(:cart => cart, :product => products(:ruby))
-   
-   get :new
-   assert_response :success
+  
+   assert_redirected_to order_path
  end   
-
-
 end
