@@ -23,7 +23,7 @@
  role :db,  "superfranklin.com", :primary => true # This is where Rails migrations will run
  # role :db,  "your slave db-server here"
 
-
+after "deploy", "deploy:cleanup"
 
 #set :scm, :subversion
 # Or: `accurev`, `bzr`, `cvs`, `darcs`, `git`, `mercurial`, `perforce`, `subversion` or `none`
