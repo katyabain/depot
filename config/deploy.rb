@@ -35,6 +35,13 @@ after "deploy", "deploy:cleanup"
 
 # if you're still using the script/reaper helper you will need
 # these http://github.com/rails/irs_process_scripts
+namespace :deploy do
+ desc "reload the database with seed data"
+ task :seed do
+ run "cd #{current_path}; rake db:seed RAILS_ENV=production"
+ end
+ end
+
 
 # If you are using Passenger mod_rails uncomment this:
 # namespace :deploy do
