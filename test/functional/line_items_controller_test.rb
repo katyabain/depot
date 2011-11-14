@@ -55,7 +55,7 @@ test "should create line_item via ajax" do
   
   assert_response :success
   assert_select_rjs :replace_html, 'cart' do
-    assert_select 'tr#current_item td', /Programming Rub 1.9/
+  assert_select 'tr#current_item td', /Programming Rub 1.9/
     end 
     end 
 
