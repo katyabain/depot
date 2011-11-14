@@ -1,17 +1,12 @@
 Depot::Application.routes.draw do
-  
-  resources :orders
-
-  get "store/index"
-
+resources :orders
+resources :line_items
+resources :carts
+get "store/index"
 resources :products do
-get :who_bought, :on => :member
+get :who_bought,
+:on => :member
 end
-
-  resources :line_items
-  resources :carts
-  resources :products
-
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
