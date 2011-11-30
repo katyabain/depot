@@ -1,0 +1,26 @@
+Thu, 17 Nov 2011 12:34:36 -0600
+doc/README_FOR_APP	Thu, 01 Sep 2011 21:37:28 -0500
+app/controllers/admin_controller.rb	Wed, 16 Nov 2011 16:14:30 -0600
+app/controllers/application_controller.rb	Wed, 16 Nov 2011 16:48:26 -0600
+app/controllers/carts_controller.rb	Wed, 16 Nov 2011 16:59:43 -0600
+app/controllers/line_items_controller.rb	Wed, 16 Nov 2011 16:52:46 -0600
+app/controllers/orders_controller.rb	Wed, 16 Nov 2011 16:53:36 -0600
+app/controllers/products_controller.rb	Mon, 14 Nov 2011 12:33:41 -0600
+app/controllers/sessions_controller.rb	Wed, 16 Nov 2011 16:50:27 -0600
+app/controllers/store_controller.rb	Wed, 16 Nov 2011 16:49:44 -0600
+app/controllers/users_controller.rb	Wed, 16 Nov 2011 17:54:19 -0600
+app/helpers/admin_helper.rb	Wed, 16 Nov 2011 15:14:44 -0600
+app/helpers/application_helper.rb	Sat, 22 Oct 2011 18:45:44 -0500
+app/helpers/carts_helper.rb	Tue, 06 Sep 2011 13:36:21 -0500
+app/helpers/line_items_helper.rb	Tue, 06 Sep 2011 13:44:53 -0500
+app/helpers/orders_helper.rb	Wed, 26 Oct 2011 22:56:11 -0500
+app/helpers/products_helper.rb	Thu, 01 Sep 2011 22:31:41 -0500
+app/helpers/sessions_helper.rb	Wed, 16 Nov 2011 15:14:19 -0600
+app/helpers/store_helper.rb	Tue, 06 Sep 2011 12:26:20 -0500
+app/helpers/users_helper.rb	Mon, 14 Nov 2011 18:03:19 -0600
+app/mailers/notifier.rb	Mon, 14 Nov 2011 17:21:12 -0600
+app/models/cart.rb	Sat, 22 Oct 2011 18:33:28 -0500
+app/models/line_item.rb	Tue, 08 Nov 2011 18:05:06 -0600
+app/models/order.rb	Tue, 08 Nov 2011 18:46:25 -0600
+app/models/product.rb	Mon, 14 Nov 2011 12:29:20 -0600
+app/models/user.rb	Wed, 16 Nov 2011 17:49:45 -0600

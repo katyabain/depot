@@ -1,53 +1,91 @@
-# good example http://hostingrails.com/Capistrano-Deploying-Your-Rails-Application-on-HostingRails-com
+##
+##  Bundler
+##
+require 'bundler/capistrano'
 
- set :application, "depot"
- set :repository,  "git@github.com:katyabain/depot.git"
-#
- set :scm, :git
- set :scm_username, "katyabain"
- set :user, "katya"
- set :branch, "master"
- #set :use_sudo, false
- set :copy_exclude, [".git", "spec"]
- set :deploy_via, :copy
+##
+## App/server config
+##
+set :application, "depot"
+set :user, "katya"
 
- # Or: `accurev`, `bzr`, `cvs`, `darcs`, `git`, `mercurial`, `perforce`, `subversion` or `none`
- default_run_options[:pty] = true
+set :use_sudo, false
+ssh_options[:forward_agent] = true
+#default_run_options[:pty] = true
 
- set :deploy_to, "/var/www/depot"
- # read more about it
- #set :chmod755, %w(app config db lib public vendor script tmp public/dispatch.cgi public/dispatch.fcgi public/dispatch.rb)
+set :deploy_to, "/var/www/#{application}"
+set :deploy_via, :remote_cache
 
- role :web, "superfranklin.com"                          # Your HTTP server, Apache/etc
- role :app, "superfranklin.com"                          # This may be the same as your `Web` server
- role :db,  "superfranklin.com", :primary => true # This is where Rails migrations will run
- # role :db,  "your slave db-server here"
+##
+## GIT 
+##
+set :scm, :git
+set :gituser, "katyabain"
+set :repository,  "git@github.com:#{gituser}/#{application}.git"
+set :branch, "master"
 
-after "deploy", "deploy:cleanup"
+## 
+##  RVM
+## 
+$:.unshift(File.expand_path('./lib', ENV['rvm_path'])) 
+require "rvm/capistrano"                  
+set :rvmruby, "ruby-1.9.2-head"
+#set :rvm_ruby_string, "#{rvmruby}@#{application}"
+set :rvm_ruby_string, "#{rvmruby}@#{superfranklin}"
 
-#set :scm, :subversion
-# Or: `accurev`, `bzr`, `cvs`, `darcs`, `git`, `mercurial`, `perforce`, `subversion` or `none`
+##
+##  Unicorn
+##
+set :unicorn_config, "#{current_path}/config/unicorn.rb"
+set :unicorn_pid, "#{current_path}/tmp/pids/unicorn.pid"
 
-#role :web, "your web-server here"                          # Your HTTP server, Apache/etc
-#role :app, "your app-server here"                          # This may be the same as your `Web` server
-#role :db,  "your primary db-server here", :primary => true # This is where Rails migrations will run
-#role :db,  "your slave db-server here"
+##
+##  Cap Deploy Config
+##
+server "superfranklin.com", :app, :web, :db, :primary => true
+set :rails_env, :production
 
-# if you're still using the script/reaper helper you will need
-# these http://github.com/rails/irs_process_scripts
+##
+##  Cap Deploy Custom  
+##
 namespace :deploy do
- desc "reload the database with seed data"
- task :seed do
- run "cd #{current_path}; rake db:seed RAILS_ENV=production"
- end
- end
+  task :start, :roles => :app, :except => { :no_release => true } do
+    run "cd #{current_path} && #{try_sudo} unicorn -c #{unicorn_config} -E #{rails_env} -D"
+  end
+  task :start_dev, :roles => :app, :except => { :no_release => true } do
+    run "cd #{current_path} && #{try_sudo} unicorn -c #{unicorn_config} -D"
+  end
+  task :stop, :roles => :app, :except => { :no_release => true } do
+    run "#{try_sudo} kill `cat #{unicorn_pid}`"
+  end
+  task :graceful_stop, :roles => :app, :except => { :no_release => true } do
+    run "#{try_sudo} kill -s QUIT `cat #{unicorn_pid}`"
+  end
+  task :reload, :roles => :app, :except => { :no_release => true } do
+    run "#{try_sudo} kill -s USR2 `cat #{unicorn_pid}`"
+  end
+  task :restart, :roles => :app, :except => { :no_release => true } do
+    stop
+    start
+  end
+  task :schema_load, :roles => :app do
+    run "cd #{current_path}; rake db:schema:load"
+  end
+  task :populate, :roles => :app do
+    run "cd #{current_path}; rake db:populate"
+  end
+  task :update_dev, :roles => :app do
+    stop
+    update
+    start_dev
+    schema_load 
+  end
+end
 
+after 'deploy:setup' do 
+  run "cd #{current_path}/.. && mkdir -p shared/socket"
+end
 
-# If you are using Passenger mod_rails uncomment this:
-# namespace :deploy do
-#   task :start do ; end
-#   task :stop do ; end
-#   task :restart, :roles => :app, :except => { :no_release => true } do
-#     run "#{try_sudo} touch #{File.join(current_path,'tmp','restart.txt')}"
-#   end
-# end
+after 'deploy:update' do 
+  run "cd #{current_path}/.. && ln -s $PWD/shared/socket current/tmp/socket"
+end

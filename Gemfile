@@ -8,6 +8,15 @@ gem 'rails', '3.0.6'
 gem 'sqlite3'
 gem 'rake', '0.9.2.2'
 
+# database
+#group :production do
+#gem 'mysql'
+#end
+
+# devise plugin for authentification
+ gem 'devise' 
+
+
 # Use unicorn as the web server
  gem 'unicorn'
 
