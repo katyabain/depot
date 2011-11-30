@@ -31,7 +31,7 @@ $:.unshift(File.expand_path('./lib', ENV['rvm_path']))
 require "rvm/capistrano"                  
 set :rvmruby, "ruby-1.9.2-head"
 #set :rvm_ruby_string, "#{rvmruby}@#{application}"
-set :rvm_ruby_string, "#{rvmruby}@#{superfranklin}"
+set :rvm_ruby_string, "#{rvmruby}@superfranklin"
 
 ##
 ##  Unicorn
@@ -83,7 +83,7 @@ namespace :deploy do
 end
 
 after 'deploy:setup' do 
-  run "cd #{current_path}/.. && mkdir -p shared/socket"
+  run "mkdir -p #{deploy_to}/shared/socket"
 end
 
 after 'deploy:update' do 
