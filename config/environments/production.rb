@@ -8,11 +8,11 @@ Depot::Application.configure do
   # Full error reports are disabled and caching is turned on
   config.consider_all_requests_local       = false
   # XXX turned off caching temp
-  config.action_controller.perform_caching = false
   #config.action_controller.perform_caching = true
+  config.action_controller.perform_caching = false
 
   # Specifies the header that your server uses for sending files
-  config.action_dispatch.x_sendfile_header = "X-Sendfile"
+  #config.action_dispatch.x_sendfile_header = "X-Sendfile"
 
   # For nginx:
   # config.action_dispatch.x_sendfile_header = 'X-Accel-Redirect'
@@ -31,24 +31,25 @@ Depot::Application.configure do
 
   # Disable Rails's static asset server
   # In production, Apache or nginx will already do this
-  config.serve_static_assets = false
+  #config.serve_static_assets = false
 
   # Enable serving of images, stylesheets, and javascripts from an asset server
   # config.action_controller.asset_host = "http://assets.example.com"
 
   # Disable delivery errors, bad email addresses will be ignored
   # config.action_mailer.raise_delivery_errors = false
-  config.action_mailer.delivery_method = :smtp
+  #config.action_mailer.delivery_method = :smtp
   
-   config.action_mailer.smtp_settings = {
-   :address          => "smtp.gmail.com",
-   :port             => 587,
-   :domain           => "domain.of.sender.net",
-   :authentication   => "plain",
-   :user_name        => "dave",
-   :password         => "secret",
-   :enable_starttls_auto => true
-   }
+  # XXX Trevor is changing everything
+   #config.action_mailer.smtp_settings = {
+   #:address          => "smtp.gmail.com",
+   #:port             => 587,
+   #:domain           => "domain.of.sender.net",
+   #:authentication   => "plain",
+   #:user_name        => "dave",
+   #:password         => "secret",
+   #:enable_starttls_auto => true
+   #}
 
 
 
