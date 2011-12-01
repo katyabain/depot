@@ -23,7 +23,8 @@ gem 'will_paginate', '>= 3.0.pre'
 # Bundle the extra gems:
 # gem 'bj'
 # gem 'nokogiri'
-# gem 'sqlite3-ruby', :require => 'sqlite3'
+gem 'sqlite3'
+gem 'sqlite3-ruby' 
 # gem 'aws-s3', :require => 'aws/s3'
 
 # rails 3.1 uses default JQuery so this line is to use RJS instead, also 
@@ -32,14 +33,11 @@ gem 'prototype-rails'
 
 group :development do
   #gem 'webrat'
-  gem 'sqlite3'
 end
 
 group :test do
-  gem 'sqlite3'
 end
 
 group :production do
   gem 'unicorn'
-  gem 'sqlite3'
 end

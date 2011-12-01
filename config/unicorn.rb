@@ -1,5 +1,5 @@
-#APP_ROOT = File.expand_path(File.dirname(File.dirname(__FILE__)))
-APP_ROOT = "/var/www/depot/current"
+APP_ROOT = File.expand_path(File.dirname(File.dirname(__FILE__)))
+#APP_ROOT = "/var/www/depot/current"
 
 if ENV['MY_RUBY_HOME'] && ENV['MY_RUBY_HOME'].include?('rvm')
   begin
@@ -15,6 +15,8 @@ end
 
 ENV['BUNDLE_GEMFILE'] = File.expand_path('../Gemfile', File.dirname(__FILE__))
 require 'bundler/setup'
+
+rails_env = ENV['RAILS_ENV'] || 'production'
 
 worker_processes 4
 working_directory APP_ROOT
