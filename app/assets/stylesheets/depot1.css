@@ -127,17 +127,14 @@ height: 100%;
 }
 
 .container {
-width: 1400px;
-padding-top: 0;
-padding bottom: 3px;
-margin-left: auto;
-margin-right: auto;
-background-color: none;
+height: 100%;
+background-color: yellow;
 }
 
 
 #menu_top {
-      background: #66cc33;
+      /* background: #66cc33;*/
+      background: red;
        margin-left: 35px;
        margin-right: 50px;
        margin-top: -20px;
@@ -164,7 +161,7 @@ padding-right: 30px;
 
 #menu_top a:hover {
 /*background-color: #66cc33;*/
-backround-color: none;
+backround-color: red;
 }
 
 .current {
@@ -192,59 +189,22 @@ padding: 0;
 
 
 #columns { 
-position: absolute;
 background: black;
 margin-left: 35px;
 margin-right: 50px;
 padding: 0;
-background: none;
-top: 70px;
-width: 240px;
-height: 620px;
-background: none;
+min-height: 560px;
 }
 
 
 #main { 
-margin-left: 300px;
-margin-right: 50px;
-margin-top: 70px;
+margin-left: 4ex;
+marging-right: 10px;
 padding-top: 2ex; 
-padding-left: 10px; 
+padding-left: 35ex; 
 padding-right: 15ex;
-height: 470px;
 background: none;
 padding-bottom: 4ex;
-}
-
-
-table.table_main {
-padding: 0px;
-border-spacing: 1px;
-} 
-
-table.table_main td {
-padding: 5px;
-padding-right: 80px;
-padding-left: 80px;
-text-align: center;
-}
-
-table.table_main td.left {
-text-align: left;
-}
-
-table.table_main tr {
-background: #f7f7f7;
-}
-
-table.table_main tr.title {
-background: #66cc33;
-font-size: 15px;
-}
-
-table.table_main td.clear {
-  background-color: white;
 }
 
 #side { 
@@ -262,7 +222,7 @@ width: 18em;
 padding-top: 1em; 
 padding-left: 1em; 
 padding-bottom: 1em; 
-width: 16em;
+width: 16em; 
 background: #66cc33;
 border-top: 25px;
 border-top-style: solid;
@@ -279,7 +239,6 @@ padding-top: 1em;
 padding-left: 1em;
 padding-bottom: 1em;
 width: 16em; 
-height: 250px;
 background: #66cc33;
 border-top: 25px;
 border-top-style: solid;
@@ -300,10 +259,9 @@ text-decoration: none;
 
 #menu_bottom {
         background: none;
-        margin-bottom: 10px;
+        margin-bottom: -20px;
         margin-left: 35px;
         margin-right: 50px;
-        margin-top: 10px;
         padding: 15px;
         text-align: center;
         font: small-caps 10px/10px "Times New Roman", serif;

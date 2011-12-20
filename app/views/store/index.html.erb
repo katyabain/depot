@@ -2,27 +2,82 @@
 <p id="notice"><%= notice %></p>
 <% end %>
 
-<h1>Your Pragmatic Catalog</h1>
-
-<% @products.each do |product| %>
-<div class="entry">
-   <%= image_tag(product.image_url) %>
-   <h3><%= product.title  %></h3>
-  <%= sanitize(product.description) %>
-   <div class="price_line">
-        <span class="price"><%= number_to_currency(product.price) %></span>
-        <%= button_to 'Add to Cart', line_items_path(:product_id => product),
-        :remote => true %>
-      </div>
-    </div>
+<!--<table width=100% border=1px cellpadding=15px class="table_main">
+-->
+<table class="table_main">
+<col span="1" class="left" />
+<col span="1" />
+<col span="1" />
+<col span="1" />
+<tr class="title">
+  <td class="left">Hosting Plan</td>
+  <td>256 MB</td>
+  <td>512 MB</td>
+  <td>1024 MB</td>
+</tr>
+<tr>
+<td class="left">Testing period</td>
+<td>30 days</td>
+<td>30 days</td>
+<td>30 days</td>
+</tr>
+<tr>
+<td class="left">Dedicated IP Addresses</td>
+<td>2</td>
+<td>5</td>
+<td>10</td>
+</tr>
+<tr>
+<td class="left" >Domains/Websites Allowed</td>
+<td>Unlimited</td>
+<td>Unlimited</td>
+<td>Umnlimited</td>
+</tr>
+<tr>
+<td class="left">Monthly Premium Transfer</td>
+<td>500 GB</td>
+<td>1000 GB</td>
+<td>1500 GB</td>
+</tr>
+<tr>
+<td class="left">Setup Fee</td>
+<td>Free!</td>
+<td>Free!</td>
+<td>Free!</td>
+</tr>
+<tr class="title">
+<td class="left">Price List</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="left">1 month</td>
+<td>5$</td>
+<td>10$</td>
+<td>15$</td>
+</tr>
+<tr>
+<td class="left">6 months</td>
+<td>30$</td>
+<td>60$</td>
+<td>90$</td>
+</tr>
+<td class="left">12 months</td>
+<td>130$</td>
+<td>160$</td>
+<td>190$</td>
+</tr>
+<td class="left">24 months</td>
+<td>230$</td>
+<td>260$</td>
+<td>290$</td>
+</tr>
+<tr class="title">
+<td class="clear"></td>
+ <% @products.each do |product| %>
+<td><%= button_to 'Add to Cart', line_items_path(:product_id => product),
+ :remote => true %></td>
 <% end %>
-
-
-
-
-   
-
-
-
-
-
+</tr>
+</table>

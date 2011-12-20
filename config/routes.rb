@@ -1,31 +1,26 @@
 Depot::Application.routes.draw do
-  devise_for :admins
+devise_for :users
+devise_for :admins, :controllers => { :sessions => "admins/sessions" }
+  
+   # controller :sessions do
+    #  get 'login' => :new
+     #     post 'login' => :create
+      #      delete 'logout' => :destroy
+       #      end 
 
-  devise_for :users
+       #           resources :users
 
- # get 'admin' => 'admin#index'
+                  resources :orders
+                  resources :line_items
+                  resources :carts
+                  get "store/index"
+                  resources :products do
+                  get :who_bought,
+                  :on => :member
+                  end
 
- #controller :sessions do
-  # get 'login' => :new
-  #post 'login' => :create
-  #delete 'logout' => :destroy
-  # end
 
- # resources :users
-
-# the second part renames root_path to store_path and doesn't work with Devise
-#root :to => 'store#index', :as => 'store'
-root :to => 'store#index'
-
-resources :orders
-resources :line_items
-resources :carts
-get "store/index"
-resources :products do
-get :who_bought,
-:on => :member
-end
-
+  root :to => 'store#index'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -75,7 +70,8 @@ end
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  # root :to => "welcome#index"
+  # root :to => 'welcome#index'
+
   # See how all your routes lay out with "rake routes"
 
   # This is a legacy wild controller route that's not recommended for RESTful applications.
