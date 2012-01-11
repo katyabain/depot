@@ -193,11 +193,10 @@ padding: 0;
 
 #columns { 
 position: absolute;
-background: black;
-margin-left: 35px;
-margin-right: 50px;
-padding: 0;
 background: none;
+left: 35px;
+right: 50px;
+padding: 0;
 top: 70px;
 width: 240px;
 height: 620px;
@@ -386,3 +385,13 @@ ul.hmenu {
 ul.hmenu li {
 display: inline;
 }
+
+div.register {
+background: #f7f7f7;
+padding: 50px;
+}
+
+div.space {
+padding: 10px;
+}
+

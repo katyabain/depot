@@ -75,9 +75,8 @@
 </tr>
 <tr class="title">
 <td class="clear"></td>
- <% @products.each do |product| %>
-<td><%= button_to 'Add to Cart', line_items_path(:product_id => product),
- :remote => true %></td>
+<% @products.each do |product| %>
+<td><%= button_to 'Order Now', line_items_path(:product_id => product) %></td> 
 <% end %>
 </tr>
 </table>

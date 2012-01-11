@@ -1,6 +1,4 @@
 Depot::Application.routes.draw do
-devise_for :users
-devise_for :admins, :controllers => { :sessions => "admins/sessions" }
   
    # controller :sessions do
     #  get 'login' => :new
@@ -8,7 +6,7 @@ devise_for :admins, :controllers => { :sessions => "admins/sessions" }
       #      delete 'logout' => :destroy
        #      end 
 
-       #           resources :users
+                  resources :users
 
                   resources :orders
                   resources :line_items
@@ -19,6 +17,7 @@ devise_for :admins, :controllers => { :sessions => "admins/sessions" }
                   :on => :member
                   end
 
+  match '/signup', :to => 'users#new'
 
   root :to => 'store#index'
   # The priority is based upon order of creation:

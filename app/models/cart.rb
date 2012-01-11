@@ -1,5 +1,19 @@
+# == Schema Information
+#
+# Table name: carts
+#
+#  id         :integer         not null, primary key
+#  created_at :datetime
+#  updated_at :datetime
+#  user_id    :integer
+#
+
 class Cart < ActiveRecord::Base
   has_many :line_items, :dependent => :destroy
+# customize devise
+belongs_to :user
+# end
+
 
     def add_product(product_id)
         current_item = line_items.find_by_product_id(product_id)

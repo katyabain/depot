@@ -32,20 +32,7 @@ content_tag 'span', link, :class => 'current'} %>
    <div id="side">
   
     <div id="side1">
-    <% if @cart %>
-     <%= hidden_div_if(@cart.line_items.empty?, :id => "cart") do %>
-        <%= render @cart %>
-     <% end %>
-     <% end %>
-      
-      <%= form_for("user", :url => user_session_path, :html => { :class => "signin_form"}) do |f| %>
-      Email:<%= f.text_field :email %>
-      Password:<%= f.password_field :password %><br />
-      <%= f.check_box :remember_me %><br />
-      <%= f.label :remember_me %><br />
-      <%= f.submit 'Sign in' %><br />
-      <%= link_to "Forgot your password?", new_password_path('user') %>
-      <% end %>
+     <br />
     </div>
 
     <div id="side2">
@@ -54,8 +41,6 @@ content_tag 'span', link, :class => 'current'} %>
                 <a href="http://www..../news">News</a><br />
                       <a href="http://www..../contact">Contact</a><br />
                         <ul class="hmenu">
-                          <%= render 'devise/menu/registration_items' %>
-                            <%= render 'devise/menu/login_items' %>
                               </ul>
     </div>
  
@@ -68,6 +53,8 @@ content_tag 'span', link, :class => 'current'} %>
   <a href="...">BILLING</a>
    <a href="...">SUPPORT</a>
   </div>
+
+<%= debug(params) if Rails.env.development? %>
 </div>
 </body>
 </html>

@@ -32,7 +32,7 @@ class CartsController < ApplicationController
   # GET /carts/new.xml
   def new
     @cart = Cart.new
-
+    @cart.user = current_user
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @cart }
@@ -48,7 +48,7 @@ class CartsController < ApplicationController
   # POST /carts.xml
   def create
     @cart = Cart.new(params[:cart])
-
+    @cart.user = current_user
     respond_to do |format|
       if @cart.save
         format.html { redirect_to(@cart, :notice => 'Cart was successfully created.') }

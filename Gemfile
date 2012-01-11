@@ -43,6 +43,7 @@ gem 'sqlite3-ruby'
 gem 'prototype-rails'
 
 group :development do
+gem 'annotate'
   #gem 'webrat'
 end
 

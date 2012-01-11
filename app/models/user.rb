@@ -1,15 +1,33 @@
+# == Schema Information
+#
+# Table name: users
+#
+#  id         :integer         not null, primary key
+#  name       :string(255)
+#  email      :string(255)
+#  created_at :datetime
+#  updated_at :datetime
+#
+
 #require 'digest/sha2'
 
 class User < ActiveRecord::Base
-  # Include default devise modules. Others available are:
-  # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
 
+email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+
+has_many :orders, :dependent => :destroy
+has_many :carts, :dependent => :destroy
+has_many :products
+  
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me
-#validates     :name, :presence => true, :uniqueness => true
+  attr_accessible :name, :email, :password, :password_confirmation, :remember_me
+ 
+  validates       :name, :presence => true,
+                  :length => { :maximum => 50 }
 
+  validates       :email, :presence => true,
+                          :format   => { :with => email_regex },
+                          :uniqueness => { :case_sensitive => false }
 #validates     :password, :confirmation => true
 #attr_accessor :password_confirmation
 #attr_reader   :password
