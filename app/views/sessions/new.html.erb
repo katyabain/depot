@@ -1,29 +1,25 @@
-<div class="depot_form">
- <% if flash[:alert] %>
- <p id="notice"><%= flash[:alert]  %></p>
- <% end %>
-
- <%= form_tag do %>
+<%= form_for(:session, :url => sessions_path) do |f| %>
    <fieldset>
      <legend>Please Log In</legend>
 
      <div>
-      <label for="name">Name:</label>
-      <%= text_field_tag :name, params[:name] %>
+     <%= f.label :email %>:
+     <%= f.text_field :email, :size => 40 %>
       </div>
 
       <div>
-       <label for="password">Password:</label>
-       <%= password_field_tag :password, params[:password] %>
+       <%= f.label :password %>:
+       <%= f.password_field :password, :size => 40 %>
        </div>
 
        <div>
-        <%= submit_tag "Login" %>
+        <%= f.submit "Sign In" %>
         </div>
        
         </fieldset>
     <% end %>
     </div>
+
 
 
 

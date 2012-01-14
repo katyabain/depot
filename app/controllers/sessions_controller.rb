@@ -2,20 +2,25 @@ class SessionsController < ApplicationController
   #skip_before_filter :authorize
   
   def new
+  @title = "Sign In"
   end
 
   def create
-# if user = User.authenticate(params[:name], params[:password])
- # session[:user_id] = user.id
-  # redirect_to admin_url
-   #else
-    # redirect_to login_url, :alert => "Invalid user/password combination"
-     #end
+  user = User.authenticate(params[:session][:email],
+                           params[:session][:password])
+  if user.nil?
+    flash.now[:error] = "Invalid email/password combination."
+    @title = "Sign In"
+    render 'new'
+ else
+  sign_in user
+  redirect_to user
+   end
   end
 
   def destroy
-  #session[:user_id] = nil
-  #redirect_to :root, :notice => "Logged out"
+   sign_out
+   redirect_to root_path
   end
 
 end

@@ -20,9 +20,14 @@
     <%= f.label :name %>:
     <%= f.text_field :name, :size => 40 %>
   </div>
+ 
+ <div>
+   <%= f.label :email %>:
+   <%= f.text_field :email, :size => 40 %>
+ </div>
 
   <div>
-    <%= f.label :password, 'Password' %>:
+    <%= f.label :password %>:
     <%= f.password_field :password, :size => 40 %>
   </div>
 
@@ -33,7 +38,7 @@
   </div>
 
   <div>
-    <%= f.submit %>
+    <%= f.submit "Sign Up" %>
   </div>
 
   </fieldset>

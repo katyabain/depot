@@ -15,21 +15,13 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @title = @user.name
-    respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @user }
-    end
   end
 
   # GET /users/new
   # GET /users/new.xml
   def new
     @user = User.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.xml  { render :xml => @user }
-    end
+    @title = "Sign Up"
   end
 
   # GET /users/1/edit
@@ -41,18 +33,14 @@ class UsersController < ApplicationController
   # POST /users.xml
   def create
     @user = User.new(params[:user])
-
-    respond_to do |format|
       if @user.save
-
-         format.html { redirect_to(users_url,
-            :notice => "User #{@user.name} was successfully created. ") }
-        format.xml  { render :xml => @user, :status => :created, :location => @user }
+     sign_in @user
+     flash[:success] = "Welcome to Superfranklin, #{@user.name}!"
+     redirect_to user_path(@user) 
       else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @user.errors, :status => :unprocessable_entity }
+       @title = "Sign Up"
+       render 'new'
       end
-    end
   end
 
   # PUT /users/1

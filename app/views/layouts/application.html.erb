@@ -24,6 +24,10 @@ content_tag 'span', link, :class => 'current'} %>
   </div>
 
 <div id="main">
+ <% flash.each do |key, value| %>
+   <div class="flash <%= key %>"><%= value %>
+   </div>
+   <% end %> 
 <%= yield %>
 </div>
 
@@ -33,6 +37,15 @@ content_tag 'span', link, :class => 'current'} %>
   
     <div id="side1">
      <br />
+   <% if signed_in? %>
+   <li>
+   <%= link_to "Sign out", signout_path, :method => :delete  %>
+   </li>
+  <% else %>
+   <li>
+    <%= link_to "Sign in", signin_path  %>
+   </li>
+   <% end %>
     </div>
 
     <div id="side2">
@@ -42,6 +55,9 @@ content_tag 'span', link, :class => 'current'} %>
                       <a href="http://www..../contact">Contact</a><br />
                         <ul class="hmenu">
                               </ul>
+                              <% if signed_in?  %>
+    <%= link_to "Profile", current_user %>
+    <% end %>
     </div>
  
  </div>

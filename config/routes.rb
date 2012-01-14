@@ -1,13 +1,7 @@
 Depot::Application.routes.draw do
   
-   # controller :sessions do
-    #  get 'login' => :new
-     #     post 'login' => :create
-      #      delete 'logout' => :destroy
-       #      end 
-
                   resources :users
-
+                  resources :sessions, :only => [:new, :create, :destroy ]
                   resources :orders
                   resources :line_items
                   resources :carts
@@ -17,7 +11,9 @@ Depot::Application.routes.draw do
                   :on => :member
                   end
 
-  match '/signup', :to => 'users#new'
+  match '/signup',  :to => 'users#new'
+  match '/signin',  :to => 'sessions#new'
+  match '/signout', :to => 'sessions#destroy'
 
   root :to => 'store#index'
   # The priority is based upon order of creation:

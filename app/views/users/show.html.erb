@@ -1,24 +1,4 @@
-<p id="notice"><%= notice %></p>
 
-<p>
-  <b>Name:</b>
-  <%= @user.name %>
-</p>
-
-<p>
-<%= @user.email %>
-</p>
-
-
-<p>
-  <b>Hashed password:</b>
-  <%= @user.hashed_password %>
-</p>
-
-<p>
-  <b>Salt:</b>
-  <%= @user.salt %>
-</p>
 
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
