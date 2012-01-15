@@ -57,6 +57,7 @@ content_tag 'span', link, :class => 'current'} %>
                               </ul>
                               <% if signed_in?  %>
     <%= link_to "Profile", current_user %>
+    <%= link_to "Settings", edit_user_path(current_user) %>
     <% end %>
     </div>
  

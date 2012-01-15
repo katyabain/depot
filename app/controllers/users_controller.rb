@@ -1,13 +1,12 @@
 class UsersController < ApplicationController
+ before_filter :authenticate, :only => [:index, :edit, :update]
+ before_filter :correct_user, :only => [:edit, :update] 
+ before_filter :admin_user :only => [:index, :destroy]
   # GET /users
   # GET /users.xml
   def index
-    @users = User.order(:name)
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @users }
-    end
+  @title = "All users"
+  @users = User.all
   end
 
   # GET /users/1
@@ -27,6 +26,7 @@ class UsersController < ApplicationController
   # GET /users/1/edit
   def edit
     @user = User.find(params[:id])
+    @title = "Edit user"
   end
 
   # POST /users
@@ -47,34 +47,42 @@ class UsersController < ApplicationController
   # PUT /users/1.xml
   def update
     @user = User.find(params[:id])
-
-    respond_to do |format|
-      if @user.update_attributes(params[:user])
-        format.html { redirect_to(users_url,
-        :notice => "User #{@user.name} was successfully update. ")}
-        format.xml  { head :ok }
-      else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @user.errors, :status => :unprocessable_entity }
+       if @user.update_attributes(params[:user])
+        flash[:success] = "Profile updated."
+        redirect_to @user
+        else
+          @title = "Edit user"
+          render 'edit'
       end
     end
-  end
+
 
   # DELETE /users/1
   # DELETE /users/1.xml
   def destroy
-    @user = User.find(params[:id])
-   
+    @user = User.find(params[:id])   
   begin
     @user.destroy
     flash[:notice] = "User #{@user.name} deleted"
     rescue Exception => e
     flash[:notice] = e.message
+    redirect_to users_path
+  end
   end
 
-    respond_to do |format|
-      format.html { redirect_to(users_url) }
-      format.xml  { head :ok }
-    end
-  end
+private
+
+def authenticate
+ deny_access unless signed_in?
+end
+
+def correct_user
+ @user = User.find(params[:id])
+ redirect_to(root_path) unless current_user?(@user)
+end
+
+def admin_user
+ redirect_to(root_path) unless current_user.admin?
+end
+
 end
