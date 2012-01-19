@@ -10,16 +10,25 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= f.label :product_id %><br />
-    <%= f.text_field :product_id %>
+ <br />
+  <div>  
+    <%= f.label :period, "Select a time period:" %><br />
+    <%= f.select :period, LineItem::PERIOD_TYPES %>
   </div>
-  <div class="field">
-    <%= f.label :cart_id %><br />
-    <%= f.text_field :cart_id %>
-  </div>
+<br />
+<div>
+<%= f.radio_button(:domain, "without", :checked => true) %>
+<%= f.label :domain, "Without domain" %><br /><br />
+<%= f.radio_button(:domain, "registered") %>
+<%= f.label :domain, "I do have a registered domain" %><br />
+<%= f.radio_button(:domain, "new") %>
+<%= f.label :domain, "New domain" %>
+</div>
+ <div>
+  <%= f.label :domain_name, "Please enter the domain name" %><br />
+ www. <%= f.text_field :domain_name %>
+ </div> <br />
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Continue" %>
   </div>
 <% end %>

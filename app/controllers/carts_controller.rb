@@ -1,5 +1,5 @@
 class CartsController < ApplicationController
-#  skip_before_filter :authorize, :only => [:create, :update, :destroy]
+  before_filter :authenticate
   
   # GET /carts
   # GET /carts.xml
@@ -42,6 +42,7 @@ class CartsController < ApplicationController
   # GET /carts/1/edit
   def edit
     @cart = Cart.find(params[:id])
+    @cart.user = current_user
   end
 
   # POST /carts
@@ -64,7 +65,7 @@ class CartsController < ApplicationController
   # PUT /carts/1.xml
   def update
     @cart = Cart.find(params[:id])
-
+    @cart.user = current_user
     respond_to do |format|
       if @cart.update_attributes(params[:cart])
         format.html { redirect_to(@cart, :notice => 'Cart was successfully updated.') }
@@ -88,4 +89,11 @@ class CartsController < ApplicationController
       format.xml  { head :ok }
     end
   end
+
+private
+ 
+ def authenticate
+  redirect_to signup_path, :notice => "Please register or sign in if existed user" unless signed_in?
+ end
+
 end

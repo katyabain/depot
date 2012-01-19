@@ -1,4 +1,5 @@
 class LineItemsController < ApplicationController
+before_filter :authenticate
 
 #skip_before_filter :authorize, :only => :create
   # GET /line_items
@@ -37,6 +38,8 @@ class LineItemsController < ApplicationController
   # GET /line_items/1/edit
   def edit
     @line_item = LineItem.find(params[:id])
+    @product_id = @line_item.product_id
+    @product = Product.find(@product_id)
   end
 
   # POST /line_items
@@ -48,7 +51,9 @@ class LineItemsController < ApplicationController
 
     respond_to do |format|
       if @line_item.save
-     format.html { redirect_to @line_item.cart}
+      format.html {redirect_to edit_line_item_path(@line_item)}
+# if user = User.authenticate(params[:name], params[:password])
+    # format.html { redirect_to @line_item.cart}
      # format.html { redirect_to new_user_registration_path}
        # format.html { redirect_to( :root ) }
        # format.js   { @current_item = @line_item }
@@ -89,4 +94,11 @@ class LineItemsController < ApplicationController
       format.xml  { head :ok }
     end
   end
+
+private
+
+def authenticate
+  deny_access unless signed_in?
+end
+
 end

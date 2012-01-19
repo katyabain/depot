@@ -10,7 +10,15 @@
       </ul>
     </div>
   <% end %>
-
+<div>
+<%= f.label :id %> 
+<%= f.text_field :id, :size => 20 %>
+<% fields_for @cart.line_items do |l| %>
+<%= l.text_field :id, :size => 20 %>
+<% end %>
+</div>
+  
+  
   <div class="actions">
     <%= f.submit %>
   </div>
