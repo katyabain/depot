@@ -15,6 +15,9 @@ gem 'rake', '0.9.2.2'
 
 gem 'haml'
 
+# whois to check the domain availability
+gem 'whois'
+
 # pagination for the atom
 gem 'will_paginate', '>= 3.0.pre'
 

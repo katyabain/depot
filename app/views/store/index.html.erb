@@ -76,7 +76,7 @@
 <tr class="title">
 <td class="clear"></td>
 <% @products.each do |product| %>
-<td><%= button_to 'Order Now', line_items_path(:product_id => product) %></td> 
+<td><%= link_to "Order now", new_line_item_path(:product_id => product) %></td> 
 <% end %>
 </tr>
 </table>

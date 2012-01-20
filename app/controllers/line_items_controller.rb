@@ -27,12 +27,8 @@ before_filter :authenticate
   # GET /line_items/new
   # GET /line_items/new.xml
   def new
-    @line_item = LineItem.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.xml  { render :xml => @line_item }
-    end
+  @line_item = LineItem.new
+  @product = Product.find(params[:product_id])
   end
 
   # GET /line_items/1/edit
@@ -45,13 +41,22 @@ before_filter :authenticate
   # POST /line_items
   # POST /line_items.xml
   def create
-     @cart = current_cart
-     product = Product.find(params[:product_id])
-     @line_item = @cart.add_product(product.id)
+   @user = current_user
+   @cart = current_cart
+   @line_item = @cart.line_items.new(params[:line_item])
+    # @cart = current_cart
+    # product = Product.find(params[:product_id])
+    # @line_item = @cart.add_product(product.id)
+    
 
     respond_to do |format|
       if @line_item.save
-      format.html {redirect_to edit_line_item_path(@line_item)}
+      r = Whois.whois(@line_item.domain_name)
+       if r.available?
+      format.html {redirect_to cart_path(@cart)}
+        else
+      format.html {redirect_to user_path(@user)}
+        end
 # if user = User.authenticate(params[:name], params[:password])
     # format.html { redirect_to @line_item.cart}
      # format.html { redirect_to new_user_registration_path}
