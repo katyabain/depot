@@ -43,20 +43,22 @@ before_filter :authenticate
   def create
    @user = current_user
    @cart = current_cart
-   @line_item = @cart.line_items.new(params[:line_item])
-    # @cart = current_cart
+  @line_item = @cart.line_items.new(params[:line_item])
     # product = Product.find(params[:product_id])
     # @line_item = @cart.add_product(product.id)
     
 
     respond_to do |format|
       if @line_item.save
-      r = Whois.whois(@line_item.domain_name)
-       if r.available?
+          if @line_item.domain == "new"
+              r = Whois.whois(@line_item.domain_name)
+                  if r.available?
+                    format.html {redirect_to cart_path(@cart)}
+                 else
+                     format.html {redirect_to edit_line_item_path(@line_item), :notice => 'Sorry, this domain name is not available'}
+                  end
+            end
       format.html {redirect_to cart_path(@cart)}
-        else
-      format.html {redirect_to user_path(@user)}
-        end
 # if user = User.authenticate(params[:name], params[:password])
     # format.html { redirect_to @line_item.cart}
      # format.html { redirect_to new_user_registration_path}
@@ -75,16 +77,25 @@ before_filter :authenticate
   # PUT /line_items/1
   # PUT /line_items/1.xml
   def update
+    @cart = current_cart
     @line_item = LineItem.find(params[:id])
 
     respond_to do |format|
       if @line_item.update_attributes(params[:line_item])
-        format.html { redirect_to(@line_item, :notice => 'Line item was successfully updated.') }
-        format.xml  { head :ok }
+           if @line_item.domain == "new"
+             r = Whois.whois(@line_item.domain_name)
+              if r.available?
+                format.html { redirect_to cart_path(@cart) }
+                format.xml  { head :ok }
+              else
+                format.html { redirect_to edit_line_item_path(@line_item), :notice => 'Sorry, this domain name is not available' }
+                format.xml  { render :xml => @line_item.errors, :status => :unprocessable_entity }
+            end
+            end
+      format.html { redirect_to cart_path(@cart) }
       else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @line_item.errors, :status => :unprocessable_entity }
-      end
+        format.html { redirect_to edit_line_item_path(@line_item) } 
+       end
     end
   end
 

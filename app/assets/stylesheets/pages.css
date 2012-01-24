@@ -1,0 +1,27 @@
+/*
+  Place all the styles related to the matching controller here.
+  They will automatically be included in application.css.
+*/
+
+
+
+#faq h3 {
+cursor:pointer;
+color: yellow;
+}
+
+#faq h3.active {
+color: green;
+}
+
+#faq div {
+height:0;
+overflow:hidden;
+position:relative;
+}
+
+#faq div p { 
+padding:0;
+margin-bottom:0;
+}
+

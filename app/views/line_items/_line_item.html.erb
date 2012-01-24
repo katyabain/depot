@@ -3,8 +3,16 @@
 <% else %>
 <tr>
 <% end %>
-<td><%= line_item.quantity  %>&times;</td>
 <td><%= line_item.product.title  %></td>
-<td class="item_price"><%= number_to_currency(line_item.total_price) %></td>
+<td class="item_price"><%= number_to_currency(line_item.price) %></td>
 </tr>
+<tr>
+<td>
+<% if line_item.domain == "new" %>
+www.<%= line_item.domain_name  %>
+<td class="item_price"><%= number_to_currency(10) %></td>
+<% end %>
+</td>
+</tr>
+
 

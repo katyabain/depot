@@ -1,5 +1,10 @@
 Depot::Application.routes.draw do
   
+  get "pages/contact"
+  get "pages/thank_you"
+  get "pages/news"
+  get "pages/faq"
+
                   resources :users
                   resources :sessions, :only => [:new, :create, :destroy ]
                   resources :orders
@@ -14,7 +19,9 @@ Depot::Application.routes.draw do
   match '/signup',  :to => 'users#new'
   match '/signin',  :to => 'sessions#new'
   match '/signout', :to => 'sessions#destroy'
-
+  match '/thanks',  :to => 'pages#thank_you'
+  match '/faq',     :to => 'pages#faq'   
+  match '/contact', :to => 'pages#contact'
   root :to => 'store#index'
   # The priority is based upon order of creation:
   # first created -> highest priority.

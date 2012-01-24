@@ -48,8 +48,8 @@ class CartsController < ApplicationController
   # POST /carts
   # POST /carts.xml
   def create
-    @cart = Cart.new(params[:cart])
-    @cart.user = current_user
+    @user = current_user
+    @cart = @user.carts.new(params[:cart])
     respond_to do |format|
       if @cart.save
         format.html { redirect_to(@cart, :notice => 'Cart was successfully created.') }

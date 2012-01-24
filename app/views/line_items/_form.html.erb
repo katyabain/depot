@@ -12,11 +12,13 @@
   <% end %>
  <br />
  <div>
+ <% if !prod_id.nil? %>
  <%= f.hidden_field :product_id, :value => prod_id %>
+ <% end %>
  </div>
   <div>  
     <%= f.label :period, "Select a time period:" %><br />
-    <%= f.select :period, LineItem::PERIOD_TYPES %>
+    <%= f.select :period, LineItem::PERIOD_TYPES %> 
   </div>
 <br />
 <div>

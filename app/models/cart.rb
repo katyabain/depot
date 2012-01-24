@@ -27,7 +27,12 @@ belongs_to :user
 
 
     def total_price
-      line_items.to_a.sum { |item| item.total_price  }
+     line_items.to_a.sum do |item|
+       if item.domain == "new"
+          item.total_price+10
+       else item.total_price 
+       end
+      end
     end
 
     def total_items

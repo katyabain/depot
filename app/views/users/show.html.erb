@@ -1,5 +1,8 @@
+<% @user = current_user %>
+<div>
+<p>Hello, <%= @user.name %>! <br />
+Description of the current plan in here
 
 
-
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+</p>
+</div>

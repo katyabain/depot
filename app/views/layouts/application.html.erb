@@ -50,9 +50,8 @@ content_tag 'span', link, :class => 'current'} %>
 
     <div id="side2">
     <a href="http://www....">Home</a><br />
-          <a href="http://www..../faq">Questions</a><br />
-                <a href="http://www..../news">News</a><br />
-                      <a href="http://www..../contact">Contact</a><br />
+        <%= link_to "FAQ", faq_path  %><br />
+                     <%= link_to "Contact Us", contact_path %>
                         <ul class="hmenu">
                               </ul>
                               <% if signed_in?  %>
