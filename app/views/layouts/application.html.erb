@@ -1,74 +1,79 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Hosting with Superfranklin</title>
-  <%= stylesheet_link_tag "application" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tag %>
+<title>Hosting with Superfranklin</title>
+<%= stylesheet_link_tag "application" %>
+<%= javascript_include_tag "application" %>
+<%= csrf_meta_tag %>
 </head>
 <body id="store">
 <div class="container">
-  <div id="menu_top"> 
+
+<div id="banner">
+<img src="/frog3.gif" width="1055" height="150">
+<div class="login">
+   <% if signed_in? %>
+     <li>
+      <%= link_to "Sign out", signout_path, :method => :delete  %>
+     </li>
+  <% else %>
+  <%= form_for(:session, :url => sessions_path) do |f| %>
+<table>
+<tr>
+<td><%= f.label :email %>:</td>
+</tr>
+<tr>
+<td> <%= f.text_field :email, :size => 20 %></td>
+</tr>
+
+<tr>
+  <td><%= f.label :password %>:</td>
+</tr>
+
+<tr>
+<td><%= f.password_field :password, :size => 20 %></td>
+</tr>
+
+<tr>
+ <td>
+  <%= f.submit "Sign In" %>
+  </td>
+</tr>
+<% end %>
+</table>
+<% end %>
+</div>
+</div>
+
+<div id="menu_top">
 <%= link_to_unless_current('HOSTING', root_path) {|link|
 content_tag 'span', link, :class => 'current'} %>|
-<%= link_to_unless_current('DOMAIN', carts_path) {|link|
+<%= link_to_unless_current('DOMAIN', new_domain_path) {|link|
 content_tag 'span', link, :class => 'current'} %>|
 <%= link_to_unless_current('BILLING', line_items_path) {|link|
 content_tag 'span', link, :class => 'current'} %>|
 <%= link_to_unless_current('SUPPORT', products_path) {|link|
 content_tag 'span', link, :class => 'current'} %>
-</div> 
- 
-  <div id="banner">
-     <%= @page_title || "* Superfranklin *"  %>
-  </div>
+</div>
 
 <div id="main">
- <% flash.each do |key, value| %>
-   <div class="flash <%= key %>"><%= value %>
-   </div>
-   <% end %> 
+<% flash.each do |key, value| %>
+<div class="<%= key %>">
+<%= value %>
+</div>
+<% end %>
 <%= yield %>
 </div>
 
 
-  <div id="columns">
-   <div id="side">
-  
-    <div id="side1">
-     <br />
-   <% if signed_in? %>
-   <li>
-   <%= link_to "Sign out", signout_path, :method => :delete  %>
-   </li>
-  <% else %>
-   <li>
-    <%= link_to "Sign in", signin_path  %>
-   </li>
-   <% end %>
-    </div>
 
-    <div id="side2">
-    <a href="http://www....">Home</a><br />
-        <%= link_to "FAQ", faq_path  %><br />
-                     <%= link_to "Contact Us", contact_path %>
-                        <ul class="hmenu">
-                              </ul>
-                              <% if signed_in?  %>
-    <%= link_to "Profile", current_user %>
-    <%= link_to "Settings", edit_user_path(current_user) %>
-    <% end %>
-    </div>
- 
- </div>
 
-    </div>
 <div id="menu_bottom">
 <a href="...">HOSTING</a>
- <a href="...">DOMAIN</a>
-  <a href="...">BILLING</a>
-   <a href="...">SUPPORT</a>
-  </div>
+<a href="...">DOMAIN</a>
+<a href="...">BILLING</a>
+<a href="...">SUPPORT</a>
+</div>
 
 <%= debug(params) if Rails.env.development? %>
 </div>

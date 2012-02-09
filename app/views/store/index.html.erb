@@ -4,16 +4,24 @@
 
 <!--<table width=100% border=1px cellpadding=15px class="table_main">
 -->
+<div id="intro">
+Our VPS hosting is for tech-savvy Web professionals like you who want a full root-level control hosting service, VPS hosting gives you independence from others
+on the same server, allowing you to enjoy the control of dedicated Web hosting at a fraction of the cost.
+</div>
+<div>
+<h2>VPS Hosting Options</h2>
+</div>
+<div id="table_id">
 <table class="table_main">
 <col span="1" class="left" />
 <col span="1" />
 <col span="1" />
 <col span="1" />
 <tr class="title">
-  <td class="left">Hosting Plan</td>
-  <td>256 MB</td>
-  <td>512 MB</td>
-  <td>1024 MB</td>
+  <td class="left" id="heading">Hosting Plan</td>
+  <td id="heading">256 MB</td>
+  <td id="heading">512 MB</td>
+  <td id="heading">1024 MB</td>
 </tr>
 <tr>
 <td class="left">Testing period</td>
@@ -46,7 +54,7 @@
 <td>Free!</td>
 </tr>
 <tr class="title">
-<td class="left">Price List</td>
+<td class="left" id="heading">Price List</td>
 <td></td>
 <td></td>
 <td></td>
@@ -74,9 +82,10 @@
 <td>290$</td>
 </tr>
 <tr class="title">
-<td class="clear"></td>
+<td id="left_coner"></td>
 <% @products.each do |product| %>
 <td><%= link_to "Order now", new_line_item_path(:product_id => product) %></td> 
 <% end %>
 </tr>
 </table>
+</div>

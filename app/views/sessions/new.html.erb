@@ -1,14 +1,16 @@
+<h2>Please Sign In or 
+<%= link_to "Sign Up", signup_path, :class => 'link_sign_up' %>
+ if a new customer!</h2>
 <%= form_for(:session, :url => sessions_path) do |f| %>
-   <fieldset>
-     <legend>Please Log In</legend>
-
+<fieldset class="warning_login">
+     <legend class="georgia">Please Sign In</legend>
      <div>
-     <%= f.label :email %>:
+     <%= f.label :email %>:<br />
      <%= f.text_field :email, :size => 40 %>
       </div>
 
       <div>
-       <%= f.label :password %>:
+       <%= f.label :password %>:<br />
        <%= f.password_field :password, :size => 40 %>
        </div>
 
@@ -16,9 +18,8 @@
         <%= f.submit "Sign In" %>
         </div>
        
-        </fieldset>
     <% end %>
-    </div>
+    </fieldset>
 
 
 

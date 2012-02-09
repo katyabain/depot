@@ -1,5 +1,5 @@
 Depot::Application.routes.draw do
-  
+ 
   get "pages/contact"
   get "pages/thank_you"
   get "pages/news"
@@ -10,6 +10,8 @@ Depot::Application.routes.draw do
                   resources :orders
                   resources :line_items
                   resources :carts
+                  resources :domains, :only => [:new,:create ]
+                 
                   get "store/index"
                   resources :products do
                   get :who_bought,

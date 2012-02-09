@@ -1,39 +1,37 @@
-<div class="depot_form">
-
 <%= form_for(@user) do |f| %>
   <% if @user.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
-
-      <ul>
+    <div>
+      <p><%= pluralize(@user.errors.count, "error") %> prohibited you from being saved:</p>
+     
+     <!-- <ul>
       <% @user.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
       <% end %>
       </ul>
+    -->
     </div>
   <% end %>
 
-<fieldset>
-<legend>Enter User details</legend>
-
+<fieldset class="warning_login">
+ <legend class="georgia">Please Enter Your details</legend>
   <div>
-    <%= f.label :name %>:
+    <%= f.label :name %>:<br />
     <%= f.text_field :name, :size => 40 %>
   </div>
  
  <div>
-   <%= f.label :email %>:
+   <%= f.label :email %>:<br />
    <%= f.text_field :email, :size => 40 %>
  </div>
 
   <div>
-    <%= f.label :password %>:
+    <%= f.label :password %>:<br />
     <%= f.password_field :password, :size => 40 %>
   </div>
 
 
   <div>
-    <%= f.label :password_confirmation, 'Confirm' %>:
+    <%= f.label :password_confirmation, 'Confirm' %>:<br />
     <%= f.password_field :password_confirmation, :size => 40 %>
   </div>
 
@@ -41,7 +39,7 @@
     <%= f.submit "Sign Up" %>
   </div>
 
-  </fieldset>
 <% end %>
+</fieldset>
 
-</div>
+

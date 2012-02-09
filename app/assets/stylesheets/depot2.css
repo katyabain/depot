@@ -1,0 +1,398 @@
+/* Global styles */
+
+#store #notice {
+        color: #000;
+        border: 2px solid red;
+        padding: 1em; 
+        margin-bottom: 2em;
+        background-color: #f0f0f0;
+        font: bold smaller sans-serif;
+}
+
+
+#store h1 {
+        background: #66cc33;
+        font:  150% sans-serif;
+        color: white;
+        border: 3px dotted white;
+}
+
+/* Styles for products/index */
+
+#product_list table {
+        border-collapse: collapse;
+}
+
+#product_list table tr td {
+        padding: 5px;
+        vertical-align: top;
+}
+
+#product_list .list_image {
+  width:        60px;
+  height:       70px;
+}
+
+#product_list .list_description {
+  width:        60%;
+}
+
+#product_list .list_description dl {
+        margin: 0;
+}
+
+#product_list .list_description dt {
+	color:        #244;
+	font-weight:  bold;
+	font-size:    larger;
+}
+
+#product_list .list_description dd {
+        margin: 0;
+}
+
+#product_list .list_actions {
+  font-size:    x-small;
+  text-align:   right;
+  padding-left: 1em;
+}
+
+#product_list .list_line_even {
+  background:   #e0f8f8;
+}
+
+#product_list .list_line_odd {
+  background:   #f8b0f8;
+}
+
+/* An entry in the store catalog */
+
+#store  .entry {
+  overflow: auto;
+  margin-top: 1em;
+  border: 1px dotted #66cc33;
+}
+
+#store  .title {
+  font-size: 120%;
+  font-family: sans-serif;
+}
+
+#store .entry img {
+  width: 80px;
+  margin-right: 5px;
+  margin-bottom: 5px;
+  float: left;
+}
+
+
+#store .entry h3 {
+ margin-top: 0;
+ margin-bottom: 2px;
+ color: #227;
+}
+
+#store .entry p {
+ margin-top: 0.5em; 
+ margin-bottom: 0.8em; 
+}
+
+#store .entry .price_line {
+ clear: both;
+ margin-bottom: 0.5em;
+}
+
+#store .entry .add_to_cart {
+  position: relative;
+}
+
+#store .entry  .price {
+  color: #44a;
+  font-weight: bold;
+  margin-right: 2em;
+}
+
+
+/*  styles for the main page*/
+html {
+height: 100%;
+padding: 0;
+margin: 0;
+}
+
+#store {
+margin: 0;
+padding: 0;
+height: 100%;
+}
+
+.container {
+width: 1400px;
+padding-top: 0;
+padding bottom: 3px;
+margin-left: auto;
+margin-right: auto;
+background-color: none;
+}
+
+
+#menu_top {
+      background: #66cc33;
+       margin-left: 35px;
+       margin-right: 50px;
+       margin-top: -20px;
+       margin-bottom: 30px;
+       padding: 15px;
+       padding-top: 30px;
+       color: white;
+       font: small-caps 20px/20px "Times New Roman", serif;
+       text-align: center;
+       -moz-border-radius: 20px;
+       -webkit-border-radius: 20px;
+       -khtml-border-radius: 20px;
+       border-radius: 20px;
+       }      
+
+ #menu_top a {
+color: white;
+font: small-caps 20px/20px "Times New Roman", serif;
+text-decoration: none;
+background-color: none;
+padding-left: 30px;
+padding-right: 30px;
+}
+
+#menu_top a:hover {
+/*background-color: #66cc33;*/
+backround-color: none;
+}
+
+.current {
+  color: #0fdef5; 
+padding-left: 30px;
+padding-right: 30px;
+}
+
+.signin_form {
+display: inline-block;
+margin: 0;
+padding: 0;
+}
+
+#banner {
+       padding-top: 10px;
+       padding-bottom: 10px; 
+       font: small-caps 40px/40px "Times New Roman", serif; 
+       color: #0FDEF5; 
+       text-align: center;
+       margin-right: 35px;
+       margin-left: 35px;
+       margin-bottom: 20px;
+       }
+
+
+#columns { 
+position: absolute;
+background: none;
+left: 35px;
+right: 50px;
+padding: 0;
+top: 70px;
+width: 240px;
+height: 620px;
+background: none;
+}
+
+
+#main { 
+margin-left: 300px;
+margin-right: 50px;
+margin-top: 70px;
+padding-top: 2ex; 
+padding-left: 10px; 
+padding-right: 0px;
+height: 470px;
+background: none;
+padding-bottom: 4ex;
+}
+
+
+table.table_main {
+padding: 0px;
+border-spacing: 1px;
+} 
+
+table.table_main td {
+padding: 5px;
+padding-right: 80px;
+padding-left: 80px;
+text-align: center;
+}
+
+table.table_main td.left {
+text-align: left;
+}
+
+table.table_main tr {
+background: #f7f7f7;
+}
+
+table.table_main tr.title {
+background: #66cc33;
+font-size: 15px;
+}
+
+table.table_main td.clear {
+  background-color: white;
+}
+
+#side { 
+float: left; 
+padding-top: 1em;  
+padding-left: 1em; 
+padding-bottom: 1em;
+padding-right: 1em;
+background: none;
+width: 18em;
+}
+
+
+#side1 { 
+padding-top: 1em; 
+padding-left: 1em; 
+padding-bottom: 1em; 
+width: 16em;
+background: #66cc33;
+border-top: 25px;
+border-top-style: solid;
+border-top-color: #0FDEF5;
+-moz-border-radius: 20px;
+-webkit-border-radius: 20px;
+-khtml-border-radius: 20px;
+border-radius: 20px;
+}
+
+#side2 {        
+margin-top: 50px;
+padding-top: 1em;
+padding-left: 1em;
+padding-bottom: 1em;
+width: 16em; 
+height: 250px;
+background: #66cc33;
+border-top: 25px;
+border-top-style: solid;
+border-top-color: #0FDEF5;
+-moz-border-radius: 20px;
+-webkit-border-radius: 20px;
+-khtml-border-radius: 20px;
+border-radius: 20px;
+color: white;
+}
+
+#side1, #side2 a { 
+color: white; 
+font-size: small;
+text-decoration: none;
+}
+
+
+#menu_bottom {
+        background: none;
+        margin-bottom: 10px;
+        margin-left: 35px;
+        margin-right: 50px;
+        margin-top: 10px;
+        padding: 15px;
+        text-align: center;
+        font: small-caps 10px/10px "Times New Roman", serif;
+        color:  #486;
+        }
+
+
+
+
+#store .entry form, #store .entry form div {
+ display :inline;
+}
+
+/* style for the cart */
+#store .cart_title {
+ font: 120% bold;
+}
+
+#store .item_price, #store .total_line {
+ text-align: right;
+}
+
+#store .total_line .total_cell {
+  font-weight: bold;
+  border-top; 1px solid #595;
+}
+
+/*styles for the cart in the side bar */
+#cart, #cart table {
+font-size: smaller;
+color: white;
+}
+
+#cart table {
+border-top: 1px dotted #595;
+border-bottom: 1px dotted #595;
+margin-bottom: 10px;
+}
+
+/* Styles for order form */
+
+.depot_form fieldset {
+  background: #efe;
+}
+
+.depot_form legend {
+  color: #dfd;
+  background: #141;
+  font-family: sans-serif;
+  padding: 0.2em 1em;
+}
+
+.depot_form label {
+   width: 5em;
+   float: left;
+   text-align: right; 
+   padding-top: 0.2em; 
+   margin-right: 0.1em; 
+   display: block;
+}
+
+.depot_form select, .depot_form textarea, .depot_form input { 
+  margin-left: 0.5em;
+}
+
+.depot_form .submit { 
+  margin-left: 4em;
+}
+
+.depot_form div { 
+  margin: 0.5em 0;
+}
+
+ul.hmenu {
+  list-style: none;
+  margin: 0 0 2em;
+  padding: 0;
+}
+
+ul.hmenu li {
+display: inline;
+}
+
+div.register {
+background: #f7f7f7;
+padding: 50px;
+}
+
+div.space {
+padding: 10px;
+}
+
+
