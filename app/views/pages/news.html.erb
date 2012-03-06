@@ -11,9 +11,32 @@ for (var i=0; i<5;i++) {
 document.write(i);
 }
 </script>
-<h1>aaaa</h1>
-<p>jsjsjssbb</p>
-
-
-
+<script>
+$(document).ready(function() {
+$('#close').hide();
+$('#open td').toggle(function() {
+$('#close').show();
+},
+     function(){
+$('#close').hide();  
+});
+});
+</script>
+<script>
+$(document).ready(function() {
+$('#gallery a').fancybox();  
+  });// end document ready
+</script>
+<div class="content">
+  <div class="main">
+      <h1>Rollover Images</h1>
+          <p>Mouse over the images below</p>
+              <div id="gallery"> <a href="../_images/large/blue.jpg" rel="gallery"><img src="../_images/small/blue.jpg" width="70" height="70" alt="blue"></a> 
+              <a href="../_images/large/green.jpg" rel="gallery"><img src="../_images/small/green.jpg" width="70" height="70" alt="green"></a>
+               <a href="../_images/large/orange.jpg" rel="gallery"><img src="../_images/small/orange.jpg" width="70" height="70" alt="orange"></a>
+                <a href="../_images/large/purple.jpg" rel="gallery"><img src="../_images/small/purple.jpg" width="70" height="70" alt="purple"></a> 
+                <a href="../_images/large/red.jpg" rel="gallery"><img src="../_images/small/red.jpg" width="70" height="70" alt="red"></a> 
+                <a href="../_images/large/yellow.jpg" rel="gallery"><img src="../_images/small/yellow.jpg" width="70" height="70" alt="yellow"></a></div>
+                </div>
+                </div>
 

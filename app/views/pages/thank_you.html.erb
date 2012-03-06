@@ -1,6 +1,14 @@
-<div>
-<% @user = current_user  %>
-<%= @user.name %>!
-<p> Thank you for placing the order. <br />
-We will send you the confirmation email in the next 24 hours. </p>
-</div>
+<h2>Thank You!</h2>
+<table class="thanks">
+<tr>
+<th><% @user = current_user  %>
+<% @user.name[0] = @user.name[0].capitalize %>
+<%= @user.name %>!</th>
+</tr>
+<tr>
+<td>
+<p> We appriciate your business with us. If you have any question or concerns please contact us.
+We will send you the confirmation email for your order in the next 24 hours. Thank You. </p>
+</td>
+</tr>
+</table>

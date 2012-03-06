@@ -1,44 +1,41 @@
 <%= form_for(@user) do |f| %>
   <% if @user.errors.any? %>
     <div>
-      <p><%= pluralize(@user.errors.count, "error") %> prohibited you from being saved:</p>
-     
-     <!-- <ul>
-      <% @user.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    -->
+    <h2>Please fill out the correct information.</h2> 
     </div>
   <% end %>
 
 <fieldset class="warning_login">
  <legend class="georgia">Please Enter Your details</legend>
-  <div>
-    <%= f.label :name %>:<br />
-    <%= f.text_field :name, :size => 40 %>
-  </div>
- 
- <div>
-   <%= f.label :email %>:<br />
-   <%= f.text_field :email, :size => 40 %>
- </div>
-
-  <div>
-    <%= f.label :password %>:<br />
-    <%= f.password_field :password, :size => 40 %>
-  </div>
-
-
-  <div>
-    <%= f.label :password_confirmation, 'Confirm' %>:<br />
-    <%= f.password_field :password_confirmation, :size => 40 %>
-  </div>
-
-  <div>
-    <%= f.submit "Sign Up" %>
-  </div>
-
+  <table>
+    <tr>
+   <td> <%= f.label :name, "Name:" %></td>
+  </tr>
+  <tr>
+   <td> <%= f.text_field :name, :size => 40 %></td>
+ </tr>
+   <tr>
+  <td> <%= f.label :email, "Email:" %> </td>
+  </tr>
+  <tr>
+   <td><%= f.text_field :email, :size => 40 %></td>
+</tr>
+    <tr>
+   <td> <%= f.label :password, "Password(min 6 characters):" %></td>
+   </tr>
+<tr>
+   <td> <%= f.password_field :password, :size => 40 %></td>
+</tr>
+<tr>
+  <td>  <%= f.label :password_confirmation, "Confirm:" %></td>
+   </tr>
+   <tr>
+   <td> <%= f.password_field :password_confirmation, :size => 40 %></td>
+</tr>
+<tr>
+   <td> <%= f.submit "Sign Up" %></td>
+</tr>
+</table>
 <% end %>
 </fieldset>
 

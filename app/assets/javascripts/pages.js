@@ -2,16 +2,13 @@
 // All this logic will automatically be available in application.js.
 $(document).ready(function() {
   $('#faq h3').each(function() {
-    var tis = $(this),
-    state = false,
-    answerNext = tis.next('div').hide().css('height','auto').slideUp();
-    answerAll = $('#faq').children('div').hide().css('height','auto').slideUp();
-    tis.click(function() {
-      state = !state;
-      answerAll.slideUp(state);
-      $('#faqs').children('h3').removeClass('active');
-      answerNext.slideToggle(state);
-      tis.addClass('active',state);
+    var tis;
+    answerAll = $('#faq').children('div').hide().css('height','auto');
+    $(this).click(function() {
+      answerAll.hide();
+      $('#faq').children('h3').removeClass('active');
+      $(this).next('div').toggle();
+      $(this).addClass('active');
     });
   });
 });

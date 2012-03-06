@@ -161,12 +161,22 @@ background: none;
 color: yellow;
 }
 
+.login a {
+font-size: 1.4em;
+color: white;
+text-decoration: none;
+}
+
+
+.login div {
+  background:  none;
+}
+
 .login table td {
 padding: 0px;
 text-align: left;
 font-size: .4em;
 font-family: georgia, serif;
-font-size: italic;
 }
 
 
@@ -312,7 +322,7 @@ color:  #486;
 .warning_login {
 text-align: left;
 font-family: georgia, serif;
-font-size: 16px;
+font-size: 1.4em;
 font-style: italic;
 margin-top: 60px;
 margin-left: 300px;
@@ -325,6 +335,10 @@ background: #888e55;
 -webkit-border-radius: 10px;
 -khtml-border-radius: 10px;
 border-radius: 10px;
+}
+
+.warning_login td {
+text-align: left;
 }
 
 .link_sign_up:hover{
@@ -350,8 +364,10 @@ color: white;
 /* styling flash messages */
 .error {
 background: #444442;
-padding-left: 50px;
-color: yellow;
+padding-left: auto;
+padding-right: auto;
+text-align: center;
+color: red;
 }
 
 
@@ -420,4 +436,130 @@ div.space {
 padding: 10px;
 }
 
+/* styling error rails automatically wraps the field with the error in divs with class field_with_errors */
 
+
+.field_with_errors {
+background-color: #888e55;
+padding: 0px;
+text-align: left;
+}
+
+
+.field_with_errors label {
+  color: red;
+  background: #444442;
+}
+
+.field_with_errors input {
+background-color: none;
+color: black;
+border: solid 2px red;
+}
+
+/* order line_item page */
+table.order {
+margin-left: auto;
+margin-right: auto;
+width: 500px;
+height: 250px;
+padding: 20px;
+background-color: #444442;
+-moz-border-radius: 10px;
+border-radius: 10px;
+color: white;
+}
+
+
+table.order td {
+text-align: left;
+padding-left: 10px;
+padding-top: 10px;
+}
+
+/* cart page */
+table.cart {
+  margin-left: auto;
+  margin-right: auto;
+  width: 500px;
+  height: 250px;
+  padding: 20px;
+  padding-right: 10px;
+  padding-left: 50px;
+  background-color: #444442;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  color: white;
+}
+
+
+table.cart td {
+  text-align: left;
+  padding-left: 10px;
+  padding-top: 10px;
+}
+
+table td.tbl_right {
+text-align: right;
+}
+
+/* thank you note */
+table.thanks {
+  margin-left: auto;
+  margin-right: auto;
+  width: 500px;
+  height: 250px;
+  padding: 20px;
+  background-color: #444442;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  color: white;
+}
+
+table.thanks td {
+    text-align: left;
+      padding-left: 10px;
+        padding-top: 10px;
+}
+
+/* faq */
+#faq h3 {
+cursor:pointer;
+color: yellow;
+}
+
+#faq h3.active {
+color: blue;
+}
+
+#faq div {
+height:0;
+/*overflow:hidden;*/
+position:relative;
+}
+
+#faq div p { 
+padding:0;
+margin-bottom:0;
+}
+
+/* just playing */
+#gallery {
+float: left;
+margin-left: 30px;
+border-right: thin dotted white;
+}
+
+#gallery img {
+display: inline-block;
+border: thin solid black;
+}
+
+#photo {
+position: relative;
+}
+
+#photo img {
+position: absolute;
+border: thin solid black;
+}

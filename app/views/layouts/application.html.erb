@@ -13,9 +13,13 @@
 <img src="/frog3.gif" width="1055" height="150">
 <div class="login">
    <% if signed_in? %>
+   <div>
+    <ul>
      <li>
       <%= link_to "Sign out", signout_path, :method => :delete  %>
      </li>
+  </ul>
+  </div>
   <% else %>
   <%= form_for(:session, :url => sessions_path) do |f| %>
 <table>

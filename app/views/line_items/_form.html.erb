@@ -1,4 +1,5 @@
 <%= form_for(@line_item) do |f| %>
+
   <% if @line_item.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@line_item.errors.count, "error") %> prohibited this line_item from being saved:</h2>
@@ -16,24 +17,30 @@
  <%= f.hidden_field :product_id, :value => prod_id %>
  <% end %>
  </div>
-  <div>  
-    <%= f.label :period, "Select a time period:" %><br />
-    <%= f.select :period, LineItem::PERIOD_TYPES %> 
-  </div>
-<br />
-<div>
-<%= f.radio_button(:domain, "without", :checked => true) %>
-<%= f.label :domain, "Without domain" %><br /><br />
-<%= f.radio_button(:domain, "registered") %>
-<%= f.label :domain, "I do have a registered domain" %><br />
-<%= f.radio_button(:domain, "new") %>
-<%= f.label :domain, "New domain" %>
-</div>
- <div>
-  <%= f.label :domain_name, "Please enter the domain name" %><br />
- www. <%= f.text_field :domain_name %>
- </div> <br />
-  <div class="actions">
-    <%= f.submit "Continue" %>
-  </div>
+<table class="order">
+ <tr>
+   <td> <%= f.label :period, "Select a time period:" %></td>
+    <td><%= f.select :period, LineItem::PERIOD_TYPES %> </td>
+</tr>
+<tr>
+<td><%= f.radio_button(:domain, "without", :checked => true) %>
+<%= f.label :domain, "Without domain" %></td>
+</tr>
+<tr>
+<td><%= f.radio_button(:domain, "registered") %>
+<%= f.label :domain, "I have a registered domain" %></td>
+</tr>
+<tr>
+<td><%= f.radio_button(:domain, "new") %>
+<%= f.label :domain, "New domain" %></td>
+</tr>
+<tr>
+  <td><%= f.label :domain_name, "Please enter the domain name" %></td>
+ <td>www. <%= f.text_field :domain_name %></td>
+   </tr>
+   <tr>
+  <td><%= f.submit "Continue" %></td>
+  <td></td>
+</tr>
+</table>
 <% end %>

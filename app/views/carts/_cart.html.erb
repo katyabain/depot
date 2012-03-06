@@ -1,12 +1,17 @@
-                   <div class="cart_title">Your Cart:</div> 
-                   <table>
-                   <%= render(cart.line_items) %>
-                   <tr class="total_line">
-                    <td colspan="2">Total</td> 
-                    <td class="total_cell"><%= number_to_currency(cart.total_price) %></td>
-                   </tr> 
-                   </table>
-                  <%= button_to "Checkout", thanks_path, :method => :get  %>
-                  <%= button_to 'Empty cart', cart, :method => :delete,
-                       :confirm => 'Are you sure?' %>
-                        
+<h2>Your cart:</h2>
+<table class="cart">
+<%= render(cart.line_items) %>
+<tr>
+<td>Setup Fee</td>
+<td><%= number_to_currency(0)%></td>
+</tr>
+<tr>
+<td class="tbl_right">Total:</td> 
+<td><%= number_to_currency(cart.total_price) %></td>
+</tr> 
+<tr>
+<td></td>
+<td><%= button_to "Checkout", thanks_path, :method => :get  %><%= button_to 'Empty cart', cart, :method => :delete,
+:confirm => 'Are you sure?' %></td>
+</tr>
+</table>

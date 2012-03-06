@@ -4,20 +4,23 @@
 <%= form_for(:session, :url => sessions_path) do |f| %>
 <fieldset class="warning_login">
      <legend class="georgia">Please Sign In</legend>
-     <div>
-     <%= f.label :email %>:<br />
-     <%= f.text_field :email, :size => 40 %>
-      </div>
-
-      <div>
-       <%= f.label :password %>:<br />
-       <%= f.password_field :password, :size => 40 %>
-       </div>
-
-       <div>
-        <%= f.submit "Sign In" %>
-        </div>
-       
+   <table>
+    <tr>
+    <td> <%= f.label :email, "Email:" %></td>
+   </tr>
+   <tr>
+    <td> <%= f.text_field :email, :size => 40 %></td>
+</tr>
+    <tr>
+      <td> <%= f.label :password, "Password:" %></td>
+       </tr>
+       <tr>
+      <td> <%= f.password_field :password, :size => 40 %></td>
+</tr>
+<tr>
+       <td> <%= f.submit "Sign In" %></td>
+   </tr>    
+    </table>
     <% end %>
     </fieldset>
 
